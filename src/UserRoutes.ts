@@ -5,14 +5,16 @@ import { CreateUserUseCase } from "./CreateUserUseCase";
 import { UserInMemoryRepository } from "./UserInMemoryRepository";
 import { JWTServiceAdapter } from "./JWTServiceAdapter";
 import { LoginUserUseCase } from "./LoginUserUseCase";
+import { AuthService } from "./AuthService";
 
 const router: Router = express.Router();
 
 const userRepository = container.resolve(UserInMemoryRepository);
 const jwtService = container.resolve(JWTServiceAdapter);
+const authService = container.resolve(AuthService);
 
 const createUserUseCase = new CreateUserUseCase(userRepository, jwtService);
-const loginUserUseCase = new LoginUserUseCase(userRepository, jwtService);
+const loginUserUseCase = new LoginUserUseCase(userRepository, jwtService, authService);
 
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
