@@ -4,21 +4,19 @@ import { App } from "../../src/App";
 describe("User API", () => {
     let app: App;
     let api: request.SuperTest<request.Test>;
+    const userDTO = { name: "John Doe", email: "john@example.com", password: "password" };
 
     beforeAll(() => {
         app = new App();
         api = request(app.app);
     });
 
-    it("should register a new user", async () => {
-        const userDTO = { name: "John Doe", email: "john@example.com", password: "password" };
-
+    it("deve criar um usuário", async () => {
         const response = await api.post("/users/register").send(userDTO);
-
         expect(response.status).toBe(201);
     });
 
-    it("should login a user", async () => {
+    it("deve fazer login e retornar um token JWT", async () => {
         const email = "john@example.com";
         const password = "password";
 
