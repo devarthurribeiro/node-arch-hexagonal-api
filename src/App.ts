@@ -1,11 +1,11 @@
 import cors from "cors";
 import express from "express";
-import { UserRoutes } from "./UserRoutes";
-import { ClientRoutes } from "./ClientRoutes";
+import { UserRoutes } from "./infra/http/UserRoutes";
+import { ClientRoutes } from "./infra/http/ClientRoutes";
 
 import errorHandler from "./infra/http/ErrorHandler";
-import { ProductRoutes } from "./ProductRoutes";
-import { ProposalRoutes } from "./ProposalRoutes";
+import { ProductRoutes } from "./infra/http/ProductRoutes";
+import { ProposalRoutes } from "./infra/http/ProposalRoutes";
 
 export class App {
   readonly app;

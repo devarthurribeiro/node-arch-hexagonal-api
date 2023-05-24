@@ -1,10 +1,10 @@
 import express, { Router } from "express";
-import { container } from "./infra/inversify.config";
-import { CreateUserUseCase } from "./core/user/application/usecase/CreateUserUseCase";
-import { UserInMemoryRepository } from "./infra/repository/UserInMemoryRepository";
-import { JWTServiceAdapter } from "./infra/service/JWTServiceAdapter";
-import { LoginUserUseCase } from "./core/user/application/usecase/LoginUserUseCase";
-import { AuthService } from "./infra/service/AuthService";
+import { container } from "../inversify.config";
+import { CreateUserUseCase } from "../../core/user/application/usecase/CreateUserUseCase";
+import { UserInMemoryRepository } from "../repository/UserInMemoryRepository";
+import { JWTServiceAdapter } from "../service/JWTServiceAdapter";
+import { LoginUserUseCase } from "../../core/user/application/usecase/LoginUserUseCase";
+import { AuthService } from "../service/AuthService";
 
 const router: Router = express.Router();
 

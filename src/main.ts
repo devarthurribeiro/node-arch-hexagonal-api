@@ -7,4 +7,4 @@ import { App } from "./App";
 const app = new App();
 
 
-app.start(3000);
+app.start(Number(process.env.PORT));

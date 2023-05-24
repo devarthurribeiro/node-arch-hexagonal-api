@@ -1,9 +1,9 @@
 import express, { Router } from "express";
-import { container } from "./infra/inversify.config";
-import { ProposalInMemoryRepository } from "./infra/repository/ProposalInMemoryRepository";
-import { CreateProposalUseCase } from "./core/proposal/application/usecase/CreateProposalUseCase";
-import { ListProposalsUseCase } from "./core/proposal/application/usecase/ListProposalUseCase";
-import { EmailService } from "./infra/notification/EmailService";
+import { container } from "../inversify.config";
+import { ProposalInMemoryRepository } from "../repository/ProposalInMemoryRepository";
+import { CreateProposalUseCase } from "../../core/proposal/application/usecase/CreateProposalUseCase";
+import { ListProposalsUseCase } from "../../core/proposal/application/usecase/ListProposalUseCase";
+import { EmailService } from "../notification/EmailService";
 import { log } from "console";
 
 

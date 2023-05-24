@@ -1,8 +1,8 @@
 import express, { Router } from "express";
-import { container } from "./infra/inversify.config";
-import { ClientInMemoryRepository } from "./infra/repository/ClientInMemoryRepository";
-import { ListClientsUseCase } from "./core/client/application/usecase/ListClientsUseCase";
-import { CreateClientUseCase } from "./core/client/application/usecase/CreateClientUseCase";
+import { container } from "../inversify.config";
+import { ClientInMemoryRepository } from "../repository/ClientInMemoryRepository";
+import { ListClientsUseCase } from "../../core/client/application/usecase/ListClientsUseCase";
+import { CreateClientUseCase } from "../../core/client/application/usecase/CreateClientUseCase";
 
 const router: Router = express.Router();
 

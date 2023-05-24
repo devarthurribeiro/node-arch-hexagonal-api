@@ -1,7 +1,7 @@
 import express, { Router } from "express";
-import { container } from "./infra/inversify.config";
-import { ProductInMemoryRepository } from "./infra/repository/ProductInMemoryRepository";
-import { ProductService } from "./core/product/application/service/ProductService";
+import { container } from "../inversify.config";
+import { ProductInMemoryRepository } from "../repository/ProductInMemoryRepository";
+import { ProductService } from "../../core/product/application/service/ProductService";
 
 const router: Router = express.Router();
 
