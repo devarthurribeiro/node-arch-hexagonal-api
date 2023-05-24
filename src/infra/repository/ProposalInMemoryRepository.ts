@@ -12,6 +12,10 @@ export class ProposalInMemoryRepository implements IProposalRepository {
     }
 
     async list(): Promise<Proposal[]> {
-        return this.proposals;
+        return this.proposals.map(proposal => {
+           const p = new Proposal(proposal, proposal.id)
+           console.log(p.total)
+           return p;
+        });
     }
 }
