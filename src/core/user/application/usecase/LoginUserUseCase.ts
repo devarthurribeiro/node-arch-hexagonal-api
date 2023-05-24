@@ -1,7 +1,7 @@
-import { IUserRepository } from "./IUserRepository";
-import { IJWTService } from "./JWTService";
+import { IUserRepository } from "../service/IUserRepository";
+import { IJWTService } from "../service/JWTService";
 import { inject, injectable } from "inversify";
-import { IAuthService } from "./IAuthService";
+import { IAuthService } from "../service/IAuthService";
 
 @injectable()
 export class LoginUserUseCase {

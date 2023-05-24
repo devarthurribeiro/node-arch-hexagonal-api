@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { IAuthService } from "./IAuthService";
+import { IAuthService } from "../../core/user/application/service/IAuthService";
 import { injectable } from "inversify";
 
 @injectable()

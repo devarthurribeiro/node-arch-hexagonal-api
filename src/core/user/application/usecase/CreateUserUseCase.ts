@@ -1,7 +1,7 @@
-import { User } from "./User";
-import { IUserRepository } from "./IUserRepository";
+import { User } from "../../domain/User";
+import { IUserRepository } from "../service/IUserRepository";
 import { inject, injectable } from "inversify";
-import { IJWTService } from "./JWTService";
+import { IJWTService } from "../service/JWTService";
 
 type CreateUserRequest = {
   name: string;

@@ -1,10 +1,10 @@
 import { Container } from "inversify";
-import { IUserRepository } from "./IUserRepository";
-import { UserInMemoryRepository } from "./UserInMemoryRepository";
-import { IJWTService } from "./JWTService";
-import { JWTServiceAdapter } from "./JWTServiceAdapter";
-import { AuthService } from "./AuthService";
-import { IAuthService } from "./IAuthService";
+import { IUserRepository } from "./core/user/application/service/IUserRepository";
+import { UserInMemoryRepository } from "./infra/repository/UserInMemoryRepository";
+import { IJWTService } from "./core/user/application/service/JWTService";
+import { JWTServiceAdapter } from "./infra/service/JWTServiceAdapter";
+import { AuthService } from "./infra/service/AuthService";
+import { IAuthService } from "./core/user/application/service/IAuthService";
 
 const container = new Container();
 

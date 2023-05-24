@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-import { User } from "./User";
-import { IJWTService } from "./JWTService";
+import { User } from "../../core/user/domain/User";
+import { IJWTService } from "../../core/user/application/service/JWTService";
 import { injectable } from "inversify";
 
 @injectable()
