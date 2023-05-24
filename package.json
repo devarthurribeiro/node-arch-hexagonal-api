@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx src/main.ts --watch",
     "test": "jest --watchAll",
+    "test:unit": "jest --watchAll /test/unit",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --fix --ext .ts"
   },
