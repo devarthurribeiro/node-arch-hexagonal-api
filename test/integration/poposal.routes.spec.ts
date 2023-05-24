@@ -2,6 +2,7 @@ import request from "supertest";
 import { App } from "../../src/App";
 import { Product } from "../../src/core/product/domain/Product";
 import { Client } from "../../src/core/client/domain/Client";
+import { productFactory } from "../factories/ProductFactory";
 
 describe("Proposal Routes /proposal", () => {
   let app: App;
@@ -15,21 +16,10 @@ describe("Proposal Routes /proposal", () => {
   const client: Client = {
     id: "client_id",
     name: "John Doe",
-    email: "johndoe@example.com",
+    email: "arnulfo.stamm67@ethereal.email",
   };
 
-  const products: Product[] = [
-    {
-      id: "product1",
-      name: "Product 1",
-      price: 10,
-    },
-    {
-      id: "product2",
-      name: "Product 2",
-      price: 20,
-    },
-  ];
+  const products: Product[] = productFactory.buildList(10);
 
   it("cria uma proposal", async () => {
     const response = await api.post("/proposals").send({
@@ -38,7 +28,6 @@ describe("Proposal Routes /proposal", () => {
       createdAt: new Date(),
     });
     expect(response.status).toBe(201);
-
   });
 
   it("retorna uma lista de proposals", async () => {

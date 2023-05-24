@@ -12,6 +12,8 @@ import { ProductInMemoryRepository } from "./repository/ProductInMemoryRepositor
 import { IProposalRepository } from "../core/proposal/application/repository/IProposalRepository";
 import { ProposalInMemoryRepository } from "./repository/ProposalInMemoryRepository";
 import { EmailService, IEmailService } from "./notification/EmailService";
+import { IProductService } from "../core/product/application/service/IProductService";
+import { ProductService } from "../core/product/application/service/ProductService";
 
 const container = new Container();
 
@@ -22,6 +24,8 @@ container.bind<IAuthService>("IAuthService").to(AuthService);
 container.bind<IClientRepository>("IClientRepository").to(ClientInMemoryRepository);
 
 container.bind<IProductRepository>("IProductRepository").to(ProductInMemoryRepository);
+container.bind<IProductService>("IProductService").to(ProductService);
+
 container.bind<IProposalRepository>("IProposalRepository").to(ProposalInMemoryRepository);
 container.bind<IEmailService>("IEmailService").to(EmailService);
 

@@ -1,18 +1,14 @@
 import request from "supertest";
 import { App } from "../../src/App";
 import { Product } from "../../src/core/product/domain/Product";
+import { container } from "../../src/infra/inversify.config";
+import { ProductService } from "../../src/core/product/application/service/ProductService";
+import { ProductInMemoryRepository } from "../../src/infra/repository/ProductInMemoryRepository";
+import { productFactory } from "../factories/ProductFactory";
 
 describe("Product Routes /products", () => {
   let app: App;
   let api: request.SuperTest<request.Test>;
-  let mockProductId = "product-1";
-  let product = new Product(
-    {
-      name: "Product 1",
-      price: 10.0,
-    },
-    mockProductId
-  );
 
   beforeAll(() => {
     app = new App();
@@ -21,6 +17,7 @@ describe("Product Routes /products", () => {
   });
 
   it("cria um product", async () => {
+    let product = productFactory.build();
     const response = await api.post("/products").send(product);
     expect(response.status).toBe(201);
   });
@@ -33,15 +30,20 @@ describe("Product Routes /products", () => {
   });
 
   it("atualliza um product", async () => {
+    const { body } = await api.post("/products").send(productFactory.build());
+    
     const response = await api.put("/products").send({
-      ...product,
-      name: "Product 1 Updated",
+      ...body,
+      name: "Product Updated",
     });
     expect(response.status).toBe(200);
+    expect(response.body.name).toBe("Product Updated");
   });
 
   it("deleta um product", async () => {
-    const response = await api.delete("/products/"+mockProductId);
-    expect(response.status).toBe(200);
+    const newProduct = await api.post("/products").send(productFactory.build());
+    
+    const response = await api.delete("/products/"+newProduct.body.id);
+    expect(response.status).toBe(204);
   });
 });

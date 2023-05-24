@@ -12,7 +12,8 @@ export class ProductService implements IProductService {
     constructor(@inject('ProductRepository') private productRepository: IProductRepository) {}
 
     async createProduct(product: CreateProductDTO): Promise<Product> {
-        return await this.productRepository.create(product);
+        const newProduct = new Product(product);
+        return await this.productRepository.create({...newProduct});
     }
 
     async getProduct(id: string): Promise<Product> {

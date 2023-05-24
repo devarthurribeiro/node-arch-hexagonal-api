@@ -1,2 +1,9 @@
 /node_modules
 /coverage
+
+.env
+.env.test
+.env.production
+
+.DS_Store
+Thumbs.db

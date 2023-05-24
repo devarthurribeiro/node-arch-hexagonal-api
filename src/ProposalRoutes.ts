@@ -4,6 +4,7 @@ import { ProposalInMemoryRepository } from "./infra/repository/ProposalInMemoryR
 import { CreateProposalUseCase } from "./core/proposal/application/usecase/CreateProposalUseCase";
 import { ListProposalsUseCase } from "./core/proposal/application/usecase/ListProposalUseCase";
 import { EmailService } from "./infra/notification/EmailService";
+import { log } from "console";
 
 
 const router: Router = express.Router();
@@ -20,10 +21,11 @@ router.post("/", async (req, res, next) => {
     const proposal = await createProposalUseCase.execute({
       client,
       products,
-      createAt,
+      createAt: new Date(createAt),
     });
     res.status(201).json(proposal);
   } catch (error) {
+    console.log(error)
     next(error)
   }
 });

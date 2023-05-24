@@ -22,7 +22,7 @@ export class CreateProposalUseCase {
         const proposal = new Proposal(input);
         const savedProposal = await this.proposalRepository.create(proposal);
 
-        this.emailService.sendEmail(savedProposal.client.email, savedProposal.emailRecipientText());
+        await this.emailService.sendEmail(savedProposal.client.email, savedProposal.emailRecipientText());
 
         return savedProposal;
     }

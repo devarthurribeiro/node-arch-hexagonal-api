@@ -22,6 +22,10 @@ describe("Proposal", () => {
     },
   ];
 
+  beforeAll(() => {
+    
+  });
+
   const createAt = new Date();
 
   it("should create a Proposal instance", () => {
@@ -45,10 +49,10 @@ describe("Proposal", () => {
 
     const expectedText = `
     Olá John Doe, tudo bem?
-    Você fez um pedido no dia 23/05/2023 
+    Você fez um pedido no dia ${createAt.toLocaleDateString()} 
     no valor de R$30.00 e os produtos foram:
-    Product 1
-    Product 2
+    1 - Product 1 R$10
+    1 - Product 2 R$20
     `.replace(/^[ \t]+/gm, "").trim();
 
     expect(proposal.emailRecipientText()).toBe(expectedText);

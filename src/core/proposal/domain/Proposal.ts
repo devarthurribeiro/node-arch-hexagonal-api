@@ -24,7 +24,7 @@ export class Proposal {
     const string = `Olá ${this.client.name}, tudo bem?
     Você fez um pedido no dia ${this.createAt.toLocaleDateString()} 
     no valor de R$${this.total.toFixed(2)} e os produtos foram:
-    ${this.products.map(product => product.name).join("\n")}`
+    ${this.products.map(product => `1 - ${product.name} R$${product.price}`).join("\n")}`
     return string.replace(/^[ \t]+/gm, "");
   }
     
