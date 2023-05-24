@@ -23,5 +23,7 @@ describe("Client Routes /clients", () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0].name).toBe("John Doe");
   });
 });

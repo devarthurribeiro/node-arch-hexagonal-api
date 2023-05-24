@@ -1,6 +1,8 @@
 import cors from "cors";
 import express from "express";
 import { UserRoutes } from "./UserRoutes";
+import { ClientRoutes } from "./ClientRoutes";
+
 import errorHandler from "./infra/http/ErrorHandler";
 
 export class App {
@@ -19,6 +21,7 @@ export class App {
 
   private setupRoutes(): void {
     this.app.use("/users", UserRoutes);
+    this.app.use("/clients", ClientRoutes);
     this.app.use(errorHandler);
   }
 
