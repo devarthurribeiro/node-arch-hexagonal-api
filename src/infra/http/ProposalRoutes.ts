@@ -4,13 +4,11 @@ import { ProposalInMemoryRepository } from "../repository/ProposalInMemoryReposi
 import { CreateProposalUseCase } from "../../core/proposal/application/usecase/CreateProposalUseCase";
 import { ListProposalsUseCase } from "../../core/proposal/application/usecase/ListProposalUseCase";
 import { EmailService } from "../notification/EmailService";
-import { log } from "console";
-
+import { IProposalRepository } from "../../core/proposal/application/repository/IProposalRepository";
 
 const router: Router = express.Router();
 
-
-const proposalRepository = container.resolve(ProposalInMemoryRepository);
+const proposalRepository = container.get<IProposalRepository>("IProposalRepository");
 const emailService = container.resolve(EmailService);
 const createProposalUseCase = new CreateProposalUseCase(proposalRepository, emailService);
 const listProposalsUseCase = new ListProposalsUseCase(proposalRepository);

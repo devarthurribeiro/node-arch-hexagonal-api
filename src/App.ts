@@ -30,7 +30,7 @@ export class App {
   }
 
   public start(port: number): void {
-    this.app.listen((port = 3000), () => {
+    this.app.listen((port = 3001), () => {
       console.log(`Server running on port ${port}`);
     });
   }

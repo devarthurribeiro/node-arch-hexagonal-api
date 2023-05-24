@@ -2,10 +2,11 @@ import express, { Router } from "express";
 import { container } from "../inversify.config";
 import { ProductInMemoryRepository } from "../repository/ProductInMemoryRepository";
 import { ProductService } from "../../core/product/application/service/ProductService";
+import { IProductRepository } from "../../core/product/application/repository/IProductRepository";
 
 const router: Router = express.Router();
 
-const productRepository = container.resolve(ProductInMemoryRepository);
+const productRepository = container.get<IProductRepository>("IProductRepository")
 const productService = new ProductService(productRepository);
 
 router.post("/", async (req, res, next) => {
