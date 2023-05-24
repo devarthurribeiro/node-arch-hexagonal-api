@@ -5,6 +5,7 @@ import { ClientRoutes } from "./ClientRoutes";
 
 import errorHandler from "./infra/http/ErrorHandler";
 import { ProductRoutes } from "./ProductRoutes";
+import { ProposalRoutes } from "./ProposalRoutes";
 
 export class App {
   readonly app;
@@ -24,6 +25,7 @@ export class App {
     this.app.use("/users", UserRoutes);
     this.app.use("/clients", ClientRoutes);
     this.app.use("/products", ProductRoutes);
+    this.app.use("/proposals", ProposalRoutes);
     this.app.use(errorHandler);
   }
 
