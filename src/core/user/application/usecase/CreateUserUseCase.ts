@@ -2,6 +2,7 @@ import { User } from "../../domain/User";
 import { IUserRepository } from "../service/IUserRepository";
 import { inject, injectable } from "inversify";
 import { IJWTService } from "../service/JWTService";
+import { UserAlreadyExists } from "../../domain/error/UserAlreadyExists";
 
 type CreateUserRequest = {
   name: string;
@@ -21,7 +22,7 @@ export class CreateUserUseCase {
       input.email
     );
     if (userAlreadyExists) {
-      throw new Error("User already exists");
+      throw new UserAlreadyExists();
     }
     const passwordHashed = await this.jwtService.hashPassword(input.password);
     const user = new User({

@@ -2,6 +2,7 @@ import { IUserRepository } from "../service/IUserRepository";
 import { IJWTService } from "../service/JWTService";
 import { inject, injectable } from "inversify";
 import { IAuthService } from "../service/IAuthService";
+import { InvalidCredentialsError } from "../../domain/error/InvalidCredentialsError";
 
 @injectable()
 export class LoginUserUseCase {
@@ -18,6 +19,6 @@ export class LoginUserUseCase {
             return this.jwtService.generateToken(user);
         }
         
-        throw new Error("Invalid email or password");
+        throw new InvalidCredentialsError();
     }
 }
