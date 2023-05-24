@@ -9,6 +9,6 @@ export class Product {
   
   constructor(props: Omit<Product, "id">, id?: string) {
     Object.assign(this, props);
-    id ? this.id = id : this.id = v4();
+   this.id = id || v4();
   }
 }
